@@ -14,6 +14,8 @@
 
 
 fun main() {
+    println()
+    println("-----------------------------------")
     println("Kotlin Collections Task 1 - Monkeys")
     println("-----------------------------------")
     println()
@@ -77,7 +79,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 0)
+    check(monkeys.count() == 4)
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
     // Try to delete 10 monkeys
@@ -91,18 +93,18 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 4)
+    check(monkeys.count() == 0)
     check(monkeyCounter(monkeys) == "There are no monkeys!")
 }
 
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
-// ###############################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+// #####################################################################################################################################################################
+
 
 /**
  * Show a given list of monkeys in the format
@@ -114,18 +116,18 @@ fun main() {
  * etc.
  */
 fun showMonkeys(monkeyList: List<String>) {
-    println("Monkey List")
     println("-------------------")
+    println("Monkey List")
+
 
     // Loop through the given list and show each monkey
-    fun monkeyCounter(monkeys: MutableList<String>) {
-        for (i in 0 ..< monkeys.size) {
-            println("$i: ${monkeys[i]}")
 
-        }
+    for (i in 0..<monkeyList.size) {
+        println("Monkey ${i + 1}: ${monkeyList[i]}")
+
     }
 
-
+}
 
 
 /**
@@ -134,11 +136,12 @@ fun showMonkeys(monkeyList: List<String>) {
  */
 fun getNewMonkey(monkeyList: MutableList<String>) {
     // Ask the user for a monkey name (no blanks)
-
+    println("New Monkey: ")
+    val newMonkey = readln()
     // Add the name to the list
-
+    monkeyList.add(newMonkey)
     // Show some feedback
-    println("Added new monkey: NAME HERE")
+    println("Added new monkey: $newMonkey")
 }
 
 
@@ -151,7 +154,8 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
  */
 fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
-    return "MONKEY COUNT MESSAGE"   // FIXME!
+    val numMonkeys = monkeyList.count()
+    return "There are $numMonkeys monkeys!"
 }
 
 
@@ -159,8 +163,8 @@ fun monkeyCounter(monkeyList: List<String>): String {
  * Returns the name of the monkey
  */
 fun longestMonkeyName(monkeyList: List<String>): String {
-    // Loop through the list and find the longest name
-    return "MONKEY NAME HERE"   // FIXME!
+    val longestName = monkeyList.maxByOrNull { it.length }
+    return "$longestName"
 }
 
 
@@ -170,9 +174,13 @@ fun longestMonkeyName(monkeyList: List<String>): String {
  */
 fun deleteFirstMonkey(monkeyList: MutableList<String>) {
     // Remove the first one from the list
+    if (monkeyList.count() != 0) {
+        val firstName = monkeyList.first()
+        monkeyList.remove(firstName)
+        println("Removing monkey: $firstName")
+    }
 
     // Show some feedback
-    println("Removing monkey: NAME HERE")
 }
 
 
@@ -182,8 +190,8 @@ fun deleteFirstMonkey(monkeyList: MutableList<String>) {
  */
 fun deleteLastMonkey(monkeyList: MutableList<String>) {
     // Remove the last one from the list
-
+    val lastName = monkeyList.last()
+    monkeyList.remove(lastName)
     // Show some feedback
-    println("Removing monkey: NAME HERE")
+    println("Removing monkey: $lastName")
 }
-
