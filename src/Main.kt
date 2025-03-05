@@ -155,9 +155,13 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
 fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
     val numMonkeys = monkeyList.count()
+    if (numMonkeys == 0) {
+        return "There are no monkeys!"
+    }
     return "There are $numMonkeys monkeys!"
-}
 
+
+}
 
 /**
  * Returns the name of the monkey
